@@ -26,7 +26,7 @@ public abstract class PresentationModel
     /**
      * Get student by id
      *
-     * @return List<Student>
+     * @return List
      */
     public abstract List<Student> getItems();
 }

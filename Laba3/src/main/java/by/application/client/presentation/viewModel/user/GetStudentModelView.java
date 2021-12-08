@@ -32,7 +32,7 @@ public class GetStudentModelView extends PresentationModel
     /**
      * Get student by id
      *
-     * @return List<Student>
+     * @return List
      */
     @Override
     public List<Student> getItems() {

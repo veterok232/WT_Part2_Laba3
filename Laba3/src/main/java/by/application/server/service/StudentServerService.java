@@ -1,13 +1,13 @@
-package by.application.client.dao;
+package by.application.server.service;
 
 import by.application.client.entity.student.Student;
 import by.application.client.entity.user.User;
 import java.util.List;
 
 /**
- * Student data access object interface
+ * Student service api
  */
-public interface StudentClientDAO
+public interface StudentServerService
 {
     /**
      * Login user
@@ -35,7 +35,7 @@ public interface StudentClientDAO
     List<Student> getAll();
 
     /**
-     * Get student by id
+     * Get user by id
      *
      * @param id Student id
      *
@@ -46,11 +46,11 @@ public interface StudentClientDAO
     /**
      *  Edit student
      *
-     * @param student Student instance
+     * @param newValue New student instance
      *
      * @return boolean
      */
-    boolean edit(Student student);
+    boolean edit(Student newValue);
 
     /**
      * Create new student

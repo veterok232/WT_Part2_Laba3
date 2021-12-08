@@ -42,15 +42,12 @@ public class Presentation
      * @return boolean
      */
     private boolean getInput(String input) {
-        try
-        {
-            // Get a new form view
+        try {
             this.view = this.view.getInput(input);
 
             return true;
         }
-        catch (IllegalArgumentException ex)
-        {
+        catch (IllegalArgumentException ex) {
             return false;
         }
     }
@@ -64,8 +61,7 @@ public class Presentation
         {
             this.view.show();
 
-            while (!getInput(scanner.nextLine()))
-            {
+            while (!getInput(scanner.nextLine())) {
                 System.out.println("Input fail!");
             }
         }

@@ -53,7 +53,7 @@ public class StudentClientServiceImpl implements StudentClientService
     /**
      * Get all students
      *
-     * @return List<Student>
+     * @return List
      */
     @Override
     public List<Student> getAll() {

@@ -30,13 +30,11 @@ public class EditStudentView extends PresentationView
             }),
             new Pair<>("Birthday (dd/mm/yyyy):", (student, input) -> {
                 DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                try
-                {
+                try {
                     student.setBirthday(LocalDate.parse(input, dateTimeFormatter));
                     return true;
                 }
-                catch (DateTimeParseException ex)
-                {
+                catch (DateTimeParseException ex) {
                     System.out.println("Invalid format!");
                 }
 
@@ -76,8 +74,7 @@ public class EditStudentView extends PresentationView
 
             return;
         }
-        else
-        {
+        else {
             student = items.get(0);
             System.out.println(student);
         }
@@ -86,26 +83,22 @@ public class EditStudentView extends PresentationView
         int i = 0;
         String input;
 
-        while (i < inputs.size())
-        {
+        while (i < inputs.size()) {
             System.out.println(inputs.get(i).getValue0());
             input = scanner.nextLine();
-            if (input.equals("exit"))
-            {
+            if (input.equals("exit")) {
                 return;
             }
 
             if (inputs.get(i).getValue1().setInput(student, input)) {
                 i++;
             }
-            else
-            {
+            else {
                 System.out.println("Invalid input!");
             }
         }
 
-        if (!this.studentService.edit(student))
-        {
+        if (!this.studentService.edit(student)) {
             System.out.println("Error writing!");
         }
     }

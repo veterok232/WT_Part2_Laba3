@@ -34,8 +34,7 @@ public class RegisterView extends PresentationView
                     user.setRole(UserRole.USER);
                     return true;
                 }
-                else if (input.equals("2"))
-                {
+                else if (input.equals("2")) {
                     user.setRole(UserRole.ADMIN);
                     return true;
                 }
@@ -67,32 +66,26 @@ public class RegisterView extends PresentationView
         int i = 0;
         String input;
 
-        while (i < inputs.size())
-        {
+        while (i < inputs.size()) {
             System.out.println(inputs.get(i).getValue0());
             input = scanner.nextLine();
-            if (input.equals("exit"))
-            {
+            if (input.equals("exit")) {
                 return;
             }
 
-            if (inputs.get(i).getValue1().setInput(user, input))
-            {
+            if (inputs.get(i).getValue1().setInput(user, input)) {
                 i++;
             }
-            else
-            {
+            else {
                 System.out.println("Invalid input!");
             }
         }
 
         User auth = this.studentService.register(user);
-        if (auth == null)
-        {
+        if (auth == null) {
             System.out.println("User exists!");
         }
-        else
-        {
+        else {
             this.currentUser = auth;
         }
     }
@@ -106,11 +99,11 @@ public class RegisterView extends PresentationView
      */
     @Override
     public PresentationView getInput(String input) {
-        return switch (this.currentUser.getRole())
-        {
-            case GUEST -> new GuestView(this.studentService, this.currentUser);
-            case USER -> new UserView(this.studentService, this.currentUser);
-            case ADMIN -> new AdminView(this.studentService, this.currentUser);
-        };
+        switch (this.currentUser.getRole()) {
+            case GUEST : { return new GuestView(this.studentService, this.currentUser); }
+            case USER : { return new UserView(this.studentService, this.currentUser); }
+            case ADMIN : { return new AdminView(this.studentService, this.currentUser); }
+            default : throw new IllegalArgumentException();
+        }
     }
 }

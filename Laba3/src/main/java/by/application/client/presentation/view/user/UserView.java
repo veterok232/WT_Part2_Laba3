@@ -36,11 +36,10 @@ public class UserView extends PresentationView
      */
     @Override
     public PresentationView getInput(String input) {
-        return switch (input)
-        {
-            case "1" -> new GetAllStudentView(this.studentService, this.currentUser);
-            case "2" -> null;
-            default -> throw new IllegalArgumentException();
-        };
+        switch (input) {
+            case "1" : { return new GetAllStudentView(this.studentService, this.currentUser); }
+            case "2" : { return null; }
+            default : throw new IllegalArgumentException();
+        }
     }
 }

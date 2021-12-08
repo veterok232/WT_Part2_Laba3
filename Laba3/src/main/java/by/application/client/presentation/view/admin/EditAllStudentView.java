@@ -27,8 +27,7 @@ public class EditAllStudentView extends PresentationView
     @Override
     public void show() {
         List<Student> studentList = this.studentService.getAll();
-        for (Student student : studentList)
-        {
+        for (Student student : studentList) {
             System.out.println(student.getId() + ": " + student.getName());
         }
 
@@ -45,18 +44,15 @@ public class EditAllStudentView extends PresentationView
      */
     @Override
     public PresentationView getInput(String input) {
-        if ("exit".equals(input))
-        {
+        if ("exit".equals(input)) {
             return new AdminView(this.studentService, this.currentUser);
         }
 
         int id;
-        try
-        {
+        try {
             id = Integer.parseInt(input);
         }
-        catch (NumberFormatException ex)
-        {
+        catch (NumberFormatException ex) {
             throw new IllegalArgumentException();
         }
 

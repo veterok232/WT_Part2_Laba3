@@ -28,8 +28,7 @@ public class GetAllStudentView extends PresentationView
     @Override
     public void show() {
         List<Student> studentList = this.studentService.getAll();
-        for (Student student : studentList)
-        {
+        for (Student student : studentList) {
             System.out.println(student.getId() + ": " + student.getName());
         }
 
@@ -46,23 +45,19 @@ public class GetAllStudentView extends PresentationView
      */
     @Override
     public PresentationView getInput(String input) {
-        if ("exit".equals(input))
-        {
-            return switch (this.currentUser.getRole())
-            {
-                case USER -> new UserView(this.studentService, this.currentUser);
-                case ADMIN -> new AdminView(this.studentService, this.currentUser);
-                default -> null;
-            };
+        if ("exit".equals(input)) {
+            switch (this.currentUser.getRole()) {
+                case USER : { return  new UserView(this.studentService, this.currentUser); }
+                case ADMIN : { return new AdminView(this.studentService, this.currentUser); }
+                default : { return null; }
+            }
         }
 
         int id;
-        try
-        {
+        try {
             id = Integer.parseInt(input);
         }
-        catch (NumberFormatException ex)
-        {
+        catch (NumberFormatException ex) {
            throw new IllegalArgumentException();
         }
 

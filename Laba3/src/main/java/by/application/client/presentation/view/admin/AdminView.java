@@ -37,12 +37,12 @@ public class AdminView extends PresentationView
      */
     @Override
     public PresentationView getInput(String input) {
-        return switch (input) {
-            case "1" -> new GetAllStudentView(this.studentService, this.currentUser);
-            case "2" -> new EditAllStudentView(this.studentService, this.currentUser);
-            case "3" -> new CreateStudentView(this.studentService, this.currentUser);
-            case "4" -> null;
-            default -> throw new IllegalArgumentException();
-        };
+        switch (input) {
+            case "1" : { return new GetAllStudentView(this.studentService, this.currentUser); }
+            case "2" : { return new EditAllStudentView(this.studentService, this.currentUser); }
+            case "3" : { return new CreateStudentView(this.studentService, this.currentUser); }
+            case "4" : { return null; }
+            default : throw new IllegalArgumentException();
+        }
     }
 }

@@ -3,10 +3,10 @@
  <object class="by.application.client.entity.student.Student">
   <void property="birthday">
    <object class="java.time.LocalDate" method="parse">
-    <string>2002-06-11</string>
+    <string>2002-08-14</string>
    </object>
   </void>
-  <void property="characteristic">
+  <void property="description">
    <string>BSUIR student</string>
   </void>
   <void property="id">
@@ -18,7 +18,7 @@
    </object>
   </void>
   <void property="name">
-   <string>Maksim</string>
+   <string>Andrey</string>
   </void>
  </object>
 </java>

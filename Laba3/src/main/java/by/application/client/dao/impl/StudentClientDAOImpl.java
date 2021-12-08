@@ -18,7 +18,7 @@ public class StudentClientDAOImpl implements StudentClientDAO
     /**
      * Client socket manager
      */
-    private final Manager manager = new Manager("localhost", 6666);
+    private final Manager manager = new Manager("localhost", 8080);
 
     /**
      * Login user
@@ -31,9 +31,9 @@ public class StudentClientDAOImpl implements StudentClientDAO
     public User login(User user)
     {
         StudentResponse response = manager.sendRequest(RequestType.LOGIN, user);
-        if (response.getBody() instanceof User body)
+        if (response.getBody() instanceof User)
         {
-            return body;
+            return (User)response.getBody();
         }
 
         return null;
@@ -50,9 +50,9 @@ public class StudentClientDAOImpl implements StudentClientDAO
     public User register(User user)
     {
         StudentResponse response = manager.sendRequest(RequestType.REGISTER, user);
-        if (response.getBody() instanceof User body)
+        if (response.getBody() instanceof User)
         {
-            return body;
+            return (User)response.getBody();
         }
 
         return null;
@@ -61,7 +61,7 @@ public class StudentClientDAOImpl implements StudentClientDAO
     /**
      * Get all students
      *
-     * @return List<Student>
+     * @return List
      */
     @Override
     public List<Student> getAll()
@@ -95,9 +95,9 @@ public class StudentClientDAOImpl implements StudentClientDAO
     {
         StudentResponse response = manager.sendRequest(RequestType.GET, id);
         if ((response != null)
-                && (response.getResponseType() == ResponseType.OK) && (response.getBody() instanceof Student student))
+                && (response.getResponseType() == ResponseType.OK) && (response.getBody() instanceof Student))
         {
-            return student;
+            return (Student)response.getBody();
         }
 
         return null;

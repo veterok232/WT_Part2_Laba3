@@ -30,7 +30,7 @@ public interface StudentClientService
     /**
      * Get all students
      *
-     * @return List<Student>
+     * @return List
      */
     List<Student> getAll();
 

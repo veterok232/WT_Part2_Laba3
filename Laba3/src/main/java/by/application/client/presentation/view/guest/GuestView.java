@@ -36,12 +36,11 @@ public class GuestView extends PresentationView
      */
     @Override
     public PresentationView getInput(String input) {
-        return switch (input)
-        {
-            case "1" -> new RegisterView(this.studentService, this.currentUser);
-            case "2" -> new LoginView(this.studentService, this.currentUser);
-            case "3" -> null;
-            default -> throw new IllegalArgumentException();
-        };
+        switch (input) {
+            case "1" : { return new RegisterView(this.studentService, this.currentUser); }
+            case "2" : { return new LoginView(this.studentService, this.currentUser); }
+            case "3" : { return null; }
+            default : throw new IllegalArgumentException();
+        }
     }
 }

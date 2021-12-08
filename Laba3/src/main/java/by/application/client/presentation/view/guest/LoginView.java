@@ -53,31 +53,27 @@ public class LoginView extends PresentationView
         int i = 0;
         String input;
 
-        while (i < inputs.size())
-        {
+        while (i < inputs.size()) {
             System.out.println(inputs.get(i).getValue0());
             input = scanner.nextLine();
-            if (input.equals("exit"))
-            {
+            if (input.equals("exit")) {
                 return;
             }
 
             if (inputs.get(i).getValue1().setInput(user, input))
             {
                 i++;
-            } else
-            {
+            }
+            else {
                 System.out.println("Invalid input!");
             }
         }
 
         User auth = this.studentService.login(user);
-        if (auth == null)
-        {
+        if (auth == null) {
             System.out.println("User not found!");
         }
-        else
-        {
+        else {
             this.currentUser = auth;
         }
     }
@@ -91,11 +87,11 @@ public class LoginView extends PresentationView
      */
     @Override
     public PresentationView getInput(String input) {
-        return switch (this.currentUser.getRole())
-        {
-            case GUEST -> new GuestView(this.studentService, this.currentUser);
-            case USER -> new UserView(this.studentService, this.currentUser);
-            case ADMIN -> new AdminView(this.studentService, this.currentUser);
-        };
+        switch (this.currentUser.getRole()) {
+            case GUEST : { return new GuestView(this.studentService, this.currentUser); }
+            case USER : { return new UserView(this.studentService, this.currentUser); }
+            case ADMIN : { return new AdminView(this.studentService, this.currentUser); }
+            default : throw new IllegalArgumentException();
+        }
     }
 }
